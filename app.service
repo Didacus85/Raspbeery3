@@ -1,0 +1,13 @@
+[Unit]
+Description=app Raspbeery
+After=multi-user.target
+
+[Service]
+ExecStart=/usr/bin/python /home/pi/env/Raspbeery2/app.py
+WorkingDirectory=/home/pi/env/Raspbeery2
+
+Restart=always
+User=pi
+
+[Install]
+WantedBy=multi-user.target
