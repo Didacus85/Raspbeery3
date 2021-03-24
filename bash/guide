@@ -1,0 +1,12 @@
+use the following command to download the installation file:
+
+wget https://raw.githubusercontent.com/Didacus85/Raspbeery2/master/bash/install_raspbeery.sh
+wget https://raw.githubusercontent.com/Didacus85/Raspbeery2/master/bash/install_hotspot.sh
+wget https://raw.githubusercontent.com/Didacus85/Raspbeery2/master/bash/install_raspbeery_and_dependency_only.sh
+
+
+sudo chmod u+x install_raspbeery.sh
+sudo ./install_raspbeery.sh
+
+sudo raspi-config
+

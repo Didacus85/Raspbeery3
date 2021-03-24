@@ -1,0 +1,1 @@
+{"APtime": "60", "LocalAPSSID": "Raspbeery", "LocalIPaddress": "192.168.1.124", "LocalPORT": "124", "WIFIENDIS": "Enabled", "name": "IPsetting"}
