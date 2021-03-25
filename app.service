@@ -3,8 +3,8 @@ Description=app Raspbeery
 After=multi-user.target
 
 [Service]
-ExecStart=/usr/bin/python /home/pi/env/Raspbeery2/app.py
-WorkingDirectory=/home/pi/env/Raspbeery2
+ExecStart=/usr/bin/python /home/pi/env/Raspbeery3/app.py
+WorkingDirectory=/home/pi/env/Raspbeery3
 
 Restart=always
 User=pi

@@ -27,19 +27,19 @@
 		<!--<link rel=stylesheet type=text/css  href="{{ url_for('static', filename='jqueryui/jquery-ui.min.css') }}">-->	
 	
 		<!--  moment (for datetime picker, should be loaded before datetimepicker) -->
-		<script type=text/javascript src="{{url_for('static', filename='moment/min/moment-with-locales.min.js') }}"></script>
+		<!--script type=text/javascript src="{{url_for('static', filename='moment/min/moment-with-locales.min.js') }}"></script-->
 
 		<!--  bootstrap.datetimepicker -->
-		<link rel="stylesheet" media="screen" href = "{{ url_for('static', filename='datetimepicker/css/bootstrap-datetimepicker.min.css') }}">
-		<script type=text/javascript src="{{url_for('static', filename='datetimepicker/js/bootstrap-datetimepicker.min.js') }}"></script>
+		<!--link rel="stylesheet" media="screen" href = "{{ url_for('static', filename='datetimepicker/css/bootstrap-datetimepicker.min.css') }}">
+		<script type=text/javascript src="{{url_for('static', filename='datetimepicker/js/bootstrap-datetimepicker.min.js') }}"></script-->
 
 		<!--  Bootstrap Select -->
 		<script type=text/javascript src="{{url_for('static', filename='bootstrap-select/js/bootstrap-select.js') }}"></script>
 		<link rel="stylesheet" media="screen" href = "{{ url_for('static', filename='bootstrap-select/css/bootstrap-select.min.css') }}">
 
 		<!--  Bootstrap Clockpicker -->
-		<script type=text/javascript src="{{url_for('static', filename='clockpicker/js/bootstrap-clockpicker.min.js') }}"></script>
-		<link rel="stylesheet" media="screen" href = "{{ url_for('static', filename='clockpicker/css/bootstrap-clockpicker.min.css') }}">
+		<!--script type=text/javascript src="{{url_for('static', filename='clockpicker/js/bootstrap-clockpicker.min.js') }}"></script>
+		<link rel="stylesheet" media="screen" href = "{{ url_for('static', filename='clockpicker/css/bootstrap-clockpicker.min.css') }}"-->
 
 	<!--
 	{% endif %}
@@ -63,11 +63,11 @@
 			('/', 	'home', 		'Home'),
 			('/actions/', 'actions', 		'Actions'),
 			('/settings/', 'settings', 		'Settings'),
-			('/network/', 	'network', 		'Network'),
 		] -%}
 		{% set active_page = active_page|default('index') -%}
 
-		  
+		{# momentaneamente tolto dal menu 
+		('/network/', 	'network', 		'Network'),#}
 		
 
 		

@@ -293,7 +293,7 @@ def actions():
 	#	return render_template('login.html',error=None, change=False)
 	
 	if request.method == 'POST':
-		os.system('sudo python3 /home/pi/env/Raspbeery2/raspbeery_1.py -a"'+request.form['azionetxt']+'"')
+		os.system('sudo python3 /home/pi/env/Raspbeery3/raspbeery_1.py -a"'+request.form['azionetxt']+'"')
 			
 	return render_template('actions.html' )
 

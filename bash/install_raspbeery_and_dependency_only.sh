@@ -118,7 +118,7 @@ sudo apt-get -y install git || { echo "ERROR --------------------------Installat
 
 
 # check if file exist in local folder
-aconf="/home/pi/env/Raspbeery2"
+aconf="/home/pi/env/Raspbeery3"
 if [ -d $aconf ]; then  # if the directory exist
 	cd /home/pi
 else
@@ -127,9 +127,9 @@ else
 	mkdir env
 	cd env
 	sudo rm -r raspbeery
-    git clone https://github.com/Didacus85/Raspbeery2.git
+    git clone https://github.com/Didacus85/Raspbeery3.git
 	sudo killall python3
-	mv Master Raspbeery2
+	mv Master Raspbeery3
     sudo chmod -R 777 /home/pi/env/
     #sudo chmod -R 777 /etc/nginx/sites-enabled/
 	cd ..
@@ -164,7 +164,7 @@ server {
     access_log off;
     error_log off;
     
-    root /home/pi/env/Raspbeery2/templates;
+    root /home/pi/env/Raspbeery3/templates;
 
     location / {
         proxy_pass http://127.0.0.1:5000;
@@ -184,18 +184,18 @@ cd ..
 
 copy_services()
 {
-sudo cp /home/pi/env/Raspbeery2/app.service /lib/systemd/system
+sudo cp /home/pi/env/Raspbeery3/app.service /lib/systemd/system
 
 sudo chmod 644 /lib/systemd/system/app.service
-sudo chmod +x /home/pi/env/Raspbeery2/app.py
+sudo chmod +x /home/pi/env/Raspbeery3/app.py
 sudo systemctl daemon-reload
 sudo systemctl enable app.service
 sudo systemctl start app.service
 
-sudo cp /home/pi/env/Raspbeery2/raspbeery.service /lib/systemd/system
+sudo cp /home/pi/env/Raspbeery3/raspbeery.service /lib/systemd/system
 
 sudo chmod 644 /lib/systemd/system/raspbeery.service
-sudo chmod +x /home/pi/env/Raspbeery2/raspbeery.py
+sudo chmod +x /home/pi/env/Raspbeery3/raspbeery.py
 sudo systemctl daemon-reload
 sudo systemctl enable app.service
 sudo systemctl start app.service
