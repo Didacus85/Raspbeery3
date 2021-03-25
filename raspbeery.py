@@ -396,10 +396,10 @@ def threadCo2(channel):
         
     if not running:
         writerunning(True)
-        t1 = thread_with_exception('preparaCo2') 
-        t1.start()
         GPIO.remove_event_detect(button6)
-        GPIO.add_event_detect(button6, GPIO.FALLING, callback=lambda a:threadReset(t1), bouncetime=2000)
+        thCo2 = thread_with_exception('preparaCo2') 
+        GPIO.add_event_detect(button6, GPIO.FALLING, callback=lambda a:threadReset(thCo2), bouncetime=2000)
+        thCo2.start()
 
 def threadRiempimento(channel):
     global running
@@ -409,10 +409,10 @@ def threadRiempimento(channel):
         
     if not running:
         writerunning(True)
-        t1 = thread_with_exception('riempimento') 
-        t1.start()
         GPIO.remove_event_detect(button6)
-        GPIO.add_event_detect(button6, GPIO.FALLING, callback=lambda a:threadReset(t1), bouncetime=2000)
+        thRiempimento = thread_with_exception('riempimento') 
+        GPIO.add_event_detect(button6, GPIO.FALLING, callback=lambda a:threadReset(thRiempimento), bouncetime=2000)
+        thRiempimento.start()
 
 def threadRiempimentoConTimer(channel):
     global running
@@ -421,10 +421,10 @@ def threadRiempimentoConTimer(channel):
         readrunning(1)
     if not running:
         writerunning(True)
-        t1 = thread_with_exception('riempimentoConTimer') 
-        t1.start()
         GPIO.remove_event_detect(button6)
-        GPIO.add_event_detect(button6, GPIO.FALLING, callback=lambda a:threadReset(t1), bouncetime=2000)
+        thRiempimentoConTimer = thread_with_exception('riempimentoConTimer')
+        GPIO.add_event_detect(button6, GPIO.FALLING, callback=lambda a:threadReset(thRiempimentoConTimer), bouncetime=2000)
+        thRiempimentoConTimer.start()
     
 def threadSfiata(channel):
     global running
@@ -435,9 +435,9 @@ def threadSfiata(channel):
     if not running:
         writerunning(True)
         GPIO.remove_event_detect(button6)
-        t1 = thread_with_exception('sfiata') 
-        GPIO.add_event_detect(button6, GPIO.FALLING, callback=lambda a:threadReset(t1), bouncetime=2000)
-        t1.start()
+        thSfiata = thread_with_exception('sfiata') 
+        GPIO.add_event_detect(button6, GPIO.FALLING, callback=lambda a:threadReset(thSfiata), bouncetime=2000)
+        thSfiata.start()
 
 def threadProcessoCompleto(channel):
     global running
@@ -447,26 +447,25 @@ def threadProcessoCompleto(channel):
         
     if not running:
         writerunning(True)
-        t1 = thread_with_exception('processoCompleto') 
-        t1.start()
         GPIO.remove_event_detect(button6)
-        GPIO.add_event_detect(button6, GPIO.FALLING, callback=lambda a:threadReset(t1), bouncetime=2000)
-
+        thProcessoCompleto = thread_with_exception('processoCompleto')
+        GPIO.add_event_detect(button6, GPIO.FALLING, callback=lambda a:threadReset(thProcessoCompleto), bouncetime=2000)
+        thProcessoCompleto.start()
 
 def threadReset(t1):
     global running
     if not servizio:
         #$$ scommentare in Raspbeery_1
         readrunning(1)
-        
-    writerunning(False)
+
     t1.raise_exception()
-    GPIO.remove_event_detect(button6)
+    writerunning(False)
     chiudiTutto()
     lcd.clear()
     lcd.message('INTERROTTO\nMANUALMENTE')
     #t1.join()
     print('threadReset')
+    GPIO.remove_event_detect(button6)
 
     
 def external_call(argv):
