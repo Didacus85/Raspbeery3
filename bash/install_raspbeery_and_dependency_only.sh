@@ -126,7 +126,7 @@ else
 	sudo rm -r env
 	mkdir env
 	cd env
-	sudo rm -r raspbeery
+	#sudo rm -r raspbeery
     git clone https://github.com/Didacus85/Raspbeery3.git
 	sudo killall python3
 	mv Master Raspbeery3
