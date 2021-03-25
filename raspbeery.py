@@ -316,7 +316,7 @@ def riempimentoConTimer():
 
 def sfiata():
     lcd.clear()
-    lcd.message('RILASCIO SCHIUMA '+str(timeSfiato)+'s')
+    lcd.message('RILASCIO SCHIUMA\n'+str(timeSfiato)+'s')
     setUscita(sfiato,True)
     time.sleep(timeSfiato)
     lcd.message('RILASCIO SCHIUMA\nFINITO')
@@ -433,10 +433,10 @@ def threadSfiata(channel):
         
     if not running:
         writerunning(True)
-        t1 = thread_with_exception('sfiata') 
-        t1.start()
         GPIO.remove_event_detect(button6)
+        t1 = thread_with_exception('sfiata') 
         GPIO.add_event_detect(button6, GPIO.FALLING, callback=lambda a:threadReset(t1), bouncetime=2000)
+        t1.start()
 
 def threadProcessoCompleto(channel):
     global running
