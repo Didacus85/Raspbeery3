@@ -96,11 +96,11 @@ def setup():
     
     if servizio:
         #$$ Commentare tutti gli add_event in Raspbeery_1
-        GPIO.add_event_detect(button1, GPIO.FALLING, callback=threadCo2, bouncetime=2000)
-        GPIO.add_event_detect(button2, GPIO.FALLING, callback=threadRiempimento, bouncetime=2000)
-        GPIO.add_event_detect(button3, GPIO.FALLING, callback=threadRiempimentoConTimer, bouncetime=2000)
-        GPIO.add_event_detect(button4, GPIO.FALLING, callback=threadSfiata, bouncetime=2000)
-        GPIO.add_event_detect(button5, GPIO.FALLING, callback=threadProcessoCompleto, bouncetime=2000)
+        GPIO.add_event_detect(button1, GPIO.FALLING, callback=threadCo2, bouncetime=1000)
+        GPIO.add_event_detect(button2, GPIO.FALLING, callback=threadRiempimento, bouncetime=1000)
+        GPIO.add_event_detect(button3, GPIO.FALLING, callback=threadRiempimentoConTimer, bouncetime=1000)
+        GPIO.add_event_detect(button4, GPIO.FALLING, callback=threadSfiata, bouncetime=1000)
+        GPIO.add_event_detect(button5, GPIO.FALLING, callback=threadProcessoCompleto, bouncetime=1000)
         GPIO.add_event_detect(ricezionerunning, GPIO.BOTH, callback=readrunning, bouncetime=300)
         #GPIO.add_event_detect(button6, GPIO.FALLING, callback=threadReset, bouncetime=5000)
 
@@ -454,18 +454,19 @@ def threadProcessoCompleto(channel):
 
 def threadReset(t1):
     global running
-    if not servizio:
+    #per ora non viene usata da web
+    #if not servizio:
         #$$ scommentare in Raspbeery_1
-        readrunning(1)
+     #   readrunning(1)
 
     t1.raise_exception()
-    t1.join()
     writerunning(False)
     chiudiTutto()
     lcd.clear()
     lcd.message('INTERROTTO\nMANUALMENTE')
     print('threadReset')
     GPIO.remove_event_detect(button6)
+    t1.join()
 
     
 def external_call(argv):
