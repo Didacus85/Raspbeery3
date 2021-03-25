@@ -459,11 +459,11 @@ def threadReset(t1):
         readrunning(1)
 
     t1.raise_exception()
+    t1.join()
     writerunning(False)
     chiudiTutto()
     lcd.clear()
     lcd.message('INTERROTTO\nMANUALMENTE')
-    t1.join()
     print('threadReset')
     GPIO.remove_event_detect(button6)
 
