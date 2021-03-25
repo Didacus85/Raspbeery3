@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# coding=utf-8
 
 import sys, getopt
 import RPi.GPIO as GPIO
@@ -28,8 +29,8 @@ button1 = 18
 button2 = 23
 button3 = 24
 button4 = 25
-button5 = 8
-button6 = 7
+button5 = 12
+button6 = 16
 
 timeVuoto = 0
 timeCo2 = 0
