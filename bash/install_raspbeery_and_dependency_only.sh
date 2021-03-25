@@ -67,6 +67,7 @@ sudo pip3 install flask || { echo "ERROR --------------------------Installation 
 #sudo pip3 install pyserial || { echo "ERROR --------------------------Installation failed ----------------" && exit ;}
 sudo apt-get install python3-future
 sudo pip install future
+sudo pip install requests
 
 #(GPIO)
 sudo pip3 install RPi.GPIO
