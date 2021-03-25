@@ -319,6 +319,7 @@ def sfiata():
     lcd.message('RILASCIO SCHIUMA\n'+str(timeSfiato)+'s')
     setUscita(sfiato,True)
     time.sleep(timeSfiato)
+    lcd.clear()
     lcd.message('RILASCIO SCHIUMA\nFINITO')
 
 
@@ -364,7 +365,7 @@ class thread_with_exception(threading.Thread):
             #GPIO.remove_event_detect(button6)
                 
         finally:
-            GPIO.remove_event_detect(button6)
+            #GPIO.remove_event_detect(button6)
             print('ended') 
            
     def get_id(self): 
