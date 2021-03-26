@@ -301,8 +301,10 @@ def system():
 			os.system('sudo shutdown now')
 			
 		if request.form['dosystemactions'] == "GIT PULL":
-			os.system('cd /home/pi/env/Raspbeery3/bash')
-			os.system('bash git_fetch.sh')
+			os.system('cd /home/pi/env/Raspbeery3')
+			os.system('git fetch origin master')
+			os.system('git reset --hard origin/master')
+			os.system('git pull origin master')
 			os.system('sudo reboot now')
 			
 	
