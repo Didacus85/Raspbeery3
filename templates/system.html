@@ -4,13 +4,15 @@
   {% if session.logged_in %}
   {% else %}
 
+  <form novalidate="true" action="/system/" method="post" name="systemactions" id="systemactions">
 
-  <input type="submit" class="reboot" name="reboot" value="REBOOT"/>
+  <input type="submit" class="" name="dosystemactions" value="REBOOT"/>
 
-  <input type="submit" class="shutdown" name="shutdown" value="SHUTDOWN"/>
+  <input type="submit" class="" name="dosystemactions" value="SHUTDOWN"/>
 
-  <input type="submit" class="gitpull" name="gitpull" value="GIT PULL"/>
-
+  <input type="submit" class="" name="dosystemactions" value="GIT PULL"/>
+  
+  </form>
 
 
   {% endif %}

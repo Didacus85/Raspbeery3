@@ -294,13 +294,13 @@ def system():
 	#	return render_template('login.html',error=None, change=False)
 
 	if request.method == 'POST':
-		if request.form['reboot'] == "REBOOT":
+		if request.form['dosystemactions'] == "REBOOT":
 			os.system('sudo reboot now')
 
-		if request.form['shutdown'] == "SHUTDOWN":
+		if request.form['dosystemactions'] == "SHUTDOWN":
 			os.system('sudo shutdown now')
 			
-		if request.form['gitpull'] == "GIT PULL":
+		if request.form['dosystemactions'] == "GIT PULL":
 			os.system('cd /home/pi/env/Raspbeery3')
 			os.system('git fetch origin master')
 			os.system('git reset --hard origin/master')
