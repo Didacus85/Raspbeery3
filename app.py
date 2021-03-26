@@ -289,7 +289,7 @@ def settings():
 
 
 @app.route('/system/', methods=['GET', 'POST'])
-def actions():
+def system():
 	#if not session.get('logged_in'):
 	#	return render_template('login.html',error=None, change=False)
 
