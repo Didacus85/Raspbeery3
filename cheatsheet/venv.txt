@@ -43,7 +43,9 @@ linux: .\.venv\bin\activate
 
 you can now instal packages as usual e.g. pip install flask
 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+GIT
 Nella cartella principale del progetto aggiungere al file .gitignore i record seguenti perchè la virtual è specifica del sistema operativo in cui la installi, 
 la virtual di windows non funzionerebbe su raspberry e causerebbe problemi
 
@@ -52,3 +54,13 @@ la virtual di windows non funzionerebbe su raspberry e causerebbe problemi
 /__pycache__
 
 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+PER FAR PARTIRE IL SERVER DA LOCALE
+
+.\.venv\Scripts\activate
+python app.py
+
+localhost:5000
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
