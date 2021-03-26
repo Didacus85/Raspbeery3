@@ -1,19 +1,22 @@
 {% extends "layout.html" %}
 {% set active_page = "settings" %}
 {% block body %}
-  {% if session.logged_in %}
-  {% else %}
+{% if session.logged_in %}
+{% else %}
 
-  <form novalidate="true" action="/system/" method="post" name="systemactions" id="systemactions">
-
-  <input type="submit" class="" name="dosystemactions" value="REBOOT"/>
-
-  <input type="submit" class="" name="dosystemactions" value="SHUTDOWN"/>
-
-  <input type="submit" class="" name="dosystemactions" value="GIT PULL"/>
+<form novalidate="true" action="/system/" method="post" name="systemactions" id="systemactions">
+<br>
+<br>
+<input type="submit" class="tempibutton" name="dosystemactions" value="REBOOT"/>
+<br>
+<br>
+<input type="submit" class="tempibutton" name="dosystemactions" value="SHUTDOWN"/>
+<br>
+<br>
+<input type="submit" class="tempibutton" name="dosystemactions" value="GIT PULL"/>
   
-  </form>
+</form>
 
 
-  {% endif %}
-  {% endblock %}
+{% endif %}
+{% endblock %}
