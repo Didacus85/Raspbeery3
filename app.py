@@ -287,6 +287,30 @@ def settings():
 	
 	return render_template('settings.html', numCicliPrepara=tempidbmod.getNumCicliPrepara(), timeVuoto=tempidbmod.getTimeVuoto(), timeCo2=tempidbmod.getTimeCo2(), timeCo2Sfiato=tempidbmod.getTimeCo2Sfiato(), timeBirraRiempimento=tempidbmod.getTimeBirraRiempimento(), timeBirraAttesa=tempidbmod.getTimeBirraAttesa(), timeSfiato=tempidbmod.getTimeSfiato() )
 
+
+@app.route('/system/', methods=['GET', 'POST'])
+def actions():
+	#if not session.get('logged_in'):
+	#	return render_template('login.html',error=None, change=False)
+
+	if request.method == 'POST':
+		if request.form['reboot'] == "REBOOT":
+			os.system('sudo reboot now')
+
+		if request.form['shutdown'] == "SHUTDOWN":
+			os.system('sudo shutdown now')
+			
+		if request.form['gitpull'] == "GIT PULL":
+			os.system('cd /home/pi/env/Raspbeery3')
+			os.system('git fetch origin master')
+			os.system('git reset --hard origin/master')
+			os.system('git pull origin master')
+			os.system('sudo reboot now')
+			
+	
+	return render_template('system.html')
+
+
 @app.route('/actions/', methods=['GET', 'POST'])
 def actions():
 	#if not session.get('logged_in'):

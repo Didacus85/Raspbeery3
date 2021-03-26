@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% set active_page = "settings" %}
+{% block body %}
+  {% if session.logged_in %}
+  {% else %}
+
+
+  <input type="submit" class="reboot" name="reboot" value="REBOOT"/>
+
+  <input type="submit" class="shutdown" name="shutdown" value="SHUTDOWN"/>
+
+  <input type="submit" class="gitpull" name="gitpull" value="GIT PULL"/>
+
+
+
+  {% endif %}
+  {% endblock %}
