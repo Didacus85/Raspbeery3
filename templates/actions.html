@@ -9,7 +9,24 @@
   input[type='button'] { font-size: 20px; }
   input[type='submit'] { font-size: 30px; }
   
+  @font-face {
+    font-family: "blink";
+    src: url('Blinker-SemiBold.woff') format('woff');
+  }
+
+  .text-font {
+    font-family: "blink";
+  }
+
+  .titolo{
+    font-family: "blink";
+    text-align: center;
+    font-size: 50px;
+    color: white;
+  }
+
   .labletempi{
+    font-family: "blink";
     text-align: center;
     font-size:20px;
   }
@@ -30,13 +47,15 @@
   }
   
   .blockbutton {
+    font-size: 30px;
+    font-family: "blink";
     display: block;
-    height: 70px;
+    height: 90px;
     /* New Button Style option*/
 	  margin: 0 auto; /* Centra il Bottone nella Pagina*/
     width: 90%; /* Larghezza Ridotta*/
     border-radius: 10px; /* Bordi arrotondati */
-    background-color: #babfbb;
+    background-color: #efefef;
     /*color: white; colore testo*/
     border: none;
     /*padding: 15px 32px;*/
@@ -58,11 +77,11 @@
   }
 
   .center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 8%;
-}
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 8%;
+  }
   
   .titolo{
       text-align: center;
@@ -70,18 +89,18 @@
       color: white;
   }
   
-body
-{
-  background:
-    linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
-    linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
-    linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
-    linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
-    linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
-    linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
-  background-color: #131313;
-  background-size: 20px 20px;
-}
+  body
+  {
+    background:
+      linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
+      linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
+      linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
+      linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
+      linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
+      linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
+    background-color: #131313;
+    background-size: 20px 20px;
+  }
   
   </style>
   <script>
@@ -93,9 +112,7 @@ body
       document.getElementById("azioni").submit();
   }
   
-  
   </script>
-  
   
   <body>
   
@@ -114,22 +131,22 @@ body
   </tr>
   
   <tr>
-  <td><input type="submit" class="blockbutton" name="azione" onclick="fsetazione('preparaCo2')" value="Prepara Co2"/></br>
+  <td><input type="submit" class="blockbutton" name="azione" onclick="fsetazione('preparaCo2')" value="PREPARA Co2"/></br>
   </td>
   </tr>
   
   <tr>
-  <td><input type="submit" class="blockbutton" name="azione" onclick="fsetazione('riempimento')" value="Riempimento"/></br>
+  <td><input type="submit" class="blockbutton" name="azione" onclick="fsetazione('riempimento')" value="RIEMPIMENTO"/></br>
   </td>
   </tr>
   
   <tr>
-  <td><input type="submit" class="blockbutton" name="azione" onclick="fsetazione('sfiata')" value="Sfiata"/></br>
+  <td><input type="submit" class="blockbutton" name="azione" onclick="fsetazione('sfiata')" value="SFIATA"/></br>
   </td>
   </tr>
   
   <tr>
-  <td><input type="submit" class="blockbutton" name="azione" onclick="fsetazione('processoCompleto')" value="Processo Completo"/></br>
+  <td><input type="submit" class="blockbutton" name="azione" onclick="fsetazione('processoCompleto')" value="PROCESSO COMPLETO"/></br>
   </td>
   </tr>
   </table>
@@ -140,9 +157,11 @@ body
   </div>
   <div id="Attendi" class="loader" style="display:none" align="center"></div>
   
-  
   </form>
-    
+  
+  <br><br>  
+  <img src="hop-logo.png" class="center" style="width:200px; height: 200px;">
+
   </body>
   </html>
 

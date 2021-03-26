@@ -5,13 +5,31 @@
   {% else %}
   
   <style>
-  input[type='text'] { font-size:30px; }
-  input[type='button'] { font-size: 20px; }
-  input[type='submit'] { font-size: 20px; }
+  input[type='text'] { 
+    font-size: 30px;
+  }
+
+  @font-face {
+    font-family: "blink";
+    src: url('Blinker-SemiBold.woff') format('woff');
+  }
+
+  .text-font {
+    font-size:22px;
+    font-family: "blink";
+  }
+
+  .titolo{
+    font-family: "blink";
+    text-align: center;
+    font-size: 50px;
+    color: white;
+  }
   
   .labletempi{
-      text-align: center;
-    font-size:20px;
+    font-family: "blink";
+    text-align: center;
+    font-size:22px;
     color: white;
   }
   
@@ -31,32 +49,41 @@
   }
   
   .tempibutton {
+    font-size: 30px;
+    font-family: "blink";
     display: block;
-    height: 100px;
-    /* New Button Style option*/
+    height: 90px;
     margin: 0 auto; /* Centra il Bottone nella Pagina*/
     width: 90%; /* Larghezza Ridotta*/
     border-radius: 10px; /* Bordi arrotondati */
+    background-color: #efefef;
     /* background-color: blue; */
     /*color: white; colore testo*/
     border: none;
     /*padding: 15px 32px;*/
     text-align: center;
     text-decoration: none;
-    /*font-size: 16px;*/
     box-shadow: 0 4px rgba(0,0,0,0.3); /* Ombra */
   }
 
   .tempibutton:hover { /* modifiche attivate al passaggio del mouse*/
-    /*background-color: #3e8e41*/
+    background-color: #dcdedc;
   }
 
   .tempibutton:active { /* modifiche attivate al click del mouse*/
-    /*background-color: #3e8e41;*/
+    background-color: #dcdedc;
     /* Prossime 2 righe effetto pulsante schiacciato*/
     box-shadow: 0 1px #000;
     transform: translateY(3px);
   }
+
+  .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 8%;
+  }
+
   body
   {
     background:
@@ -69,13 +96,9 @@
     background-color: #131313;
     background-size: 20px 20px;
   }
-  .titolo{
-      text-align: center;
-      font-size: 50px;
-      color: white;
-  }
   
   </style>
+
   <script>
   
   function fsetazione(azione){
@@ -85,13 +108,11 @@
       document.getElementById("dati").submit();
   }
   
-  
   </script>
-
   
   <body>
   
-  <h1 class="titolo">RASPBEERY</h1>
+  <h1 class="titolo">RASPBEERY SETTINGS</h1>
   <br>
   <div id="pulsanti_azioni" style="display:block">
       
@@ -138,23 +159,20 @@
   </td>
   </tr>
   <tr>
-  <td><!--input type="button" name="tempistandard" class="tempibutton" onclick="numCicliPrepara.value='2';timeVuoto.value='0';timeCo2.value='1';timeCo2Sfiato.value='1';timeBirraRiempimento.value='5';timeBirraAttesa.value='3';timeSfiato.value='3';" value="Tempistandard"/-->
+  <td style="width:45%">
+    <!--input type="button" name="tempistandard" class="tempibutton" onclick="numCicliPrepara.value='2';timeVuoto.value='0';timeCo2.value='1';timeCo2Sfiato.value='1';timeBirraRiempimento.value='5';timeBirraAttesa.value='3';timeSfiato.value='3';" value="Tempistandard"/-->
   <input type="submit" class="tempibutton" name="impostatempi" value="IMPOSTA TEMPI"/>
   </td>
-  <td colspan="2"><input type="submit" class="tempibutton" name="impostatempi" value="Tempistandard"/>
+  <td colspan="2" style="width:45%"><input type="submit" class="tempibutton" name="impostatempi" value="TEMPI STANDARD"/>
   </td>
   </tr>
   </table>
-  
-  
-  </br>
-  </br>
 
-  </form>
+  </form> 
   
-  
-  
-  
+  <br><br>  
+  <img src="hop-logo.png" class="center" style="width:200px; height: 200px;">
+
   </body>
   </html>
 

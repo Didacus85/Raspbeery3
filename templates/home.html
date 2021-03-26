@@ -14,17 +14,35 @@ body{
   background-size: 20px 20px;
 }
 
+@font-face {
+  font-family: "blink";
+  src: url('Blinker-SemiBold.woff') format('woff');
+}
+
+.text-font {
+  font-family: "blink";
+}
+
 .titolo{
-    text-align: center;
-    font-size: 50px;
-    color: white;
+  font-family: "blink";
+  text-align: center;
+  font-size: 50px;
+  color: white;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 8%;
 }
 
 </style>
 
 <body>
 	<h1 class="titolo">HOME PAGE<h1>
-
+  <br><br>  
+  <img src="hop-logo.png" class="center" style="width:200px; height: 200px;">
 </body>
 
 {% endblock %}
