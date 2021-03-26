@@ -1,0 +1,17 @@
+---------------------------------------------------------------------------
+NON GRAPHICS:
+
+bottone start e stop servizo raspbeery.service
+provare a importare raspbeery.py direttamente in app.py
+
+
+
+
+---------------------------------------------------------------------------
+
+GRAPHICS:
+
+i bottoni pagina Settings sbordano nella visualizzazione da mobile
+
+
+
