@@ -197,8 +197,8 @@ sudo cp /home/pi/env/Raspbeery3/raspbeery.service /lib/systemd/system
 sudo chmod 644 /lib/systemd/system/raspbeery.service
 sudo chmod +x /home/pi/env/Raspbeery3/raspbeery.py
 sudo systemctl daemon-reload
-sudo systemctl enable app.service
-sudo systemctl start app.service
+sudo systemctl enable raspbeery.service
+sudo systemctl start raspbeery.service
 
 }
 
