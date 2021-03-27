@@ -319,6 +319,7 @@ def sfiata():
     lcd.message('RILASCIO SCHIUMA\n'+str(timeSfiato)+'s')
     setUscita(sfiato,True)
     time.sleep(timeSfiato)
+    setUscita(sfiato,False)
     lcd.clear()
     lcd.message('RILASCIO SCHIUMA\nFINITO')
 
