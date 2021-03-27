@@ -59,6 +59,29 @@
     src: url('{{url_for('static', filename='Blinker-SemiBold.woff')}}') format('woff');
   }
 
+  input[type='text'] { 
+    font-size: 30px;
+  }
+
+  .text-font {
+    font-size:22px;
+    font-family: "blink";
+  }
+
+  .titolo{
+    font-family: "blink";
+    text-align: center;
+    font-size: 50px;
+    color: white;
+  }
+
+  .labletempi{
+    font-family: "blink";
+    text-align: center;
+    font-size:22px;
+    color: white;
+  }
+
   .tempibutton {
     display: block;
     height: 100px;
@@ -85,6 +108,13 @@
     /* Prossime 2 righe effetto pulsante schiacciato*/
     box-shadow: 0 1px #000;
     transform: translateY(3px);
+  }
+  
+  .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 8%;
   }
   
   body {
@@ -180,17 +210,12 @@
 		{% with messages = get_flashed_messages(with_categories=true) %}
 		  {% if messages %}
 			{% for category, message in messages %}
-				{% if category=="message" %}			
-					<div class="alert alert-success alert-dismissable">
-					   <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-					   {{ message }}
-					</div> 
-				{% else %}
-					<div class="alert alert-{{category}} alert-dismissable">
-					   <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-					   {{ message }}
-					</div> 				
-				{% endif %}			
+				
+				<div class="alert alert-{{category}} alert-dismissable text-center">
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+					{{ message }}
+				</div> 				
+						
 			{% endfor %}
 		  {% endif %}
 		{% endwith %}

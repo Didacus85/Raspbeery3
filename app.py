@@ -5,8 +5,11 @@ import networkmod
 import tempidbmod
 import requests
 import os
+import platform
+
 
 app = Flask(__name__)
+app.secret_key = "super secret key"
 
 @app.route('/')
 def index():
@@ -292,23 +295,37 @@ def settings():
 def system():
 	#if not session.get('logged_in'):
 	#	return render_template('login.html',error=None, change=False)
-
-	if request.method == 'POST':
-		if request.form['dosystemactions'] == "REBOOT":
-			os.system('sudo reboot now')
-
-		if request.form['dosystemactions'] == "SHUTDOWN":
-			os.system('sudo shutdown now')
-			
-		if request.form['dosystemactions'] == "GIT PULL":
-			os.system('cd /home/pi/env/Raspbeery3')
-			os.system('git fetch origin master')
-			os.system('git reset --hard origin/master')
-			os.system('git pull origin master')
-			os.system('sudo reboot now')
-			
 	
-	return render_template('system.html')
+	#print("OS: " +platform.system())
+	if request.method == 'POST':
+		if platform.system() != "Windows":
+			flash('BOTTONI FUNZIONANTI', category="success")
+
+			if request.form['dosystemactions'] == "REBOOT":
+				os.system('sudo reboot now')
+
+			if request.form['dosystemactions'] == "SHUTDOWN":
+				os.system('sudo shutdown now')
+				
+			if request.form['dosystemactions'] == "GIT PULL":
+				os.system('cd /home/pi/env/Raspbeery3')
+				os.system('git fetch origin master')
+				os.system('git reset --hard origin/master')
+				os.system('git pull origin master')
+				os.system('sudo reboot now')
+			
+			if request.form['dosystemactions'] == "START SERVICE RASPBEERY":
+				os.system('sudo systemctl start raspbeery.service')
+
+			if request.form['dosystemactions'] == "STOP SERVICE RASPBEERY":
+				os.system('sudo systemctl stop raspbeery.service')
+
+			if request.form['dosystemactions'] == "RESTART SERVICE RASPBEERY":
+				os.system('sudo systemctl restart raspbeery.service')
+		else:
+			flash('BOTTONI NON FUNZIONANTI', category="danger")
+
+	return render_template('system.html', osSystem=platform.system() )
 
 
 @app.route('/actions/', methods=['GET', 'POST'])

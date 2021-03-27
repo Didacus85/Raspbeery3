@@ -1,10 +1,17 @@
 {% extends "layout.html" %}
-{% set active_page = "settings" %}
+{% set active_page = "system" %}
 {% block body %}
 {% if session.logged_in %}
 {% else %}
 
+<body>
+
 <h1 class="titolo">SYSTEM ACTIONS</h1>
+
+<p class="labletempi">RUNNING ON {{ osSystem }}</p>
+{% if osSystem=="Windows" %}
+<p class="labletempi">( BOTTONI FUNZIONANTI SOLO SU RASPBERRY )</p>
+{% endif %}
 
 <form novalidate="true" action="/system/" method="post" name="systemactions" id="systemactions">
 <br>
@@ -16,9 +23,27 @@
 <br>
 <br>
 <input type="submit" class="tempibutton" name="dosystemactions" value="GIT PULL"/>
-  
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<input type="submit" class="tempibutton" name="dosystemactions" value="START SERVICE RASPBEERY"/>
+<br>
+<br>
+<input type="submit" class="tempibutton" name="dosystemactions" value="STOP SERVICE RASPBEERY"/>
+<br>
+<br>
+<input type="submit" class="tempibutton" name="dosystemactions" value="RESTART SERVICE RASPBEERY"/>
+
 </form>
 
+
+<br><br>  
+<img src="{{url_for('static', filename='hop-logo.png')}}" class="center" style="width:200px; height: 200px;">
+
+</body>
 
 {% endif %}
 {% endblock %}

@@ -3,7 +3,6 @@ NON GRAPHICS:
 
 bottone start e stop servizo raspbeery.service
 provare a importare raspbeery.py direttamente in app.py
-controllare come mai non parte raspbeery.service all' avvio
 
 
 
