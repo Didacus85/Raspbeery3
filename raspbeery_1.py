@@ -359,7 +359,7 @@ def pulizia():
 
         #######
 
-        fastsleep=0,5
+        fastsleep=0.5
 
         for y in range(1,3):
             setUscita(birra,False)
