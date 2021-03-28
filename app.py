@@ -262,6 +262,10 @@ def settings():
 
 	if request.method == 'POST':
 		if request.form['impostatempi'] == "IMPOSTA TEMPI":
+			
+			numCicliPulizia = request.form['numCicliPulizia']
+			tempidbmod.changesavesetting("numCicliPulizia", numCicliPulizia)
+
 			numCicliPrepara = request.form['numCicliPrepara']
 			tempidbmod.changesavesetting("numCicliPrepara", numCicliPrepara)
 			
@@ -290,7 +294,7 @@ def settings():
 			
 	flash('MODIFICA EFFETTUATA', category="success")
 
-	return render_template('settings.html', numCicliPrepara=tempidbmod.getNumCicliPrepara(), timeVuoto=tempidbmod.getTimeVuoto(), timeCo2=tempidbmod.getTimeCo2(), timeCo2Sfiato=tempidbmod.getTimeCo2Sfiato(), timeBirraRiempimento=tempidbmod.getTimeBirraRiempimento(), timeBirraAttesa=tempidbmod.getTimeBirraAttesa(), timeSfiato=tempidbmod.getTimeSfiato() )
+	return render_template('settings.html', numCicliPulizia=tempidbmod.getNumCicliPrepara(), numCicliPrepara=tempidbmod.getNumCicliPrepara(), timeVuoto=tempidbmod.getTimeVuoto(), timeCo2=tempidbmod.getTimeCo2(), timeCo2Sfiato=tempidbmod.getTimeCo2Sfiato(), timeBirraRiempimento=tempidbmod.getTimeBirraRiempimento(), timeBirraAttesa=tempidbmod.getTimeBirraAttesa(), timeSfiato=tempidbmod.getTimeSfiato() )
 
 
 @app.route('/system/', methods=['GET', 'POST'])
