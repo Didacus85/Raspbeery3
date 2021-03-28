@@ -333,7 +333,7 @@ def processoCompleto():
     sfiata()
 
 def pulizia():
-    for x in range(0,numCicliPrepara):
+    for x in range(1,numCicliPrepara):
         lcd.clear()
         lcd.message('CICLO PULIZIA N° \n'+str(x)+' DI '+str(numCicliPrepara))
 
@@ -361,7 +361,7 @@ def pulizia():
 
         fastsleep=0,5
 
-        for x in range(0,3):
+        for y in range(1,3):
             setUscita(birra,False)
             time.sleep(fastsleep)
             setUscita(birra,True)
