@@ -333,9 +333,9 @@ def processoCompleto():
     sfiata()
 
 def pulizia():
-    for x in range(1,numCicliPrepara):
+    for x in range(0,numCicliPrepara):
         lcd.clear()
-        lcd.message('CICLO PULIZIA N° \n'+str(x)+' DI '+str(numCicliPrepara))
+        lcd.message('CICLO PULIZIA N° \n'+str(x+1)+' DI '+str(numCicliPrepara))
 
         sleep = 10
 
@@ -359,9 +359,9 @@ def pulizia():
 
         #######
 
-        fastsleep=0.5
+        fastsleep=1
 
-        for y in range(1,3):
+        for y in range(0, 3):
             setUscita(birra,False)
             time.sleep(fastsleep)
             setUscita(birra,True)
@@ -385,7 +385,7 @@ def pulizia():
             setUscita(birra,False)
 
         lcd.clear()
-        lcd.message('AMMOLLO N° \n'+str(x)+' DI '+str(numCicliPrepara))
+        lcd.message('AMMOLLO N° \n'+str(x+1)+' DI '+str(numCicliPrepara))
 
         time.sleep(10)
 
