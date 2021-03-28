@@ -287,7 +287,9 @@ def settings():
 		if request.form['impostatempi'] == "Tempistandard":
 			print("Tempistandard ")
 			tempidbmod.restoredefault()
-	
+			
+	flash('MODIFICA EFFETTUATA', category="success")
+
 	return render_template('settings.html', numCicliPrepara=tempidbmod.getNumCicliPrepara(), timeVuoto=tempidbmod.getTimeVuoto(), timeCo2=tempidbmod.getTimeCo2(), timeCo2Sfiato=tempidbmod.getTimeCo2Sfiato(), timeBirraRiempimento=tempidbmod.getTimeBirraRiempimento(), timeBirraAttesa=tempidbmod.getTimeBirraAttesa(), timeSfiato=tempidbmod.getTimeSfiato() )
 
 

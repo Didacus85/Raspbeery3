@@ -40,6 +40,7 @@ timeBirraAttesa = 0
 timeSfiato = 0
 
 numCicliPrepara=0
+numCicliPulizia=0
 
 running = False
 relayAttivoOnHigh=False;
@@ -159,6 +160,7 @@ def readtempi():
     global timeBirraRiempimento
     global timeBirraAttesa
     global timeSfiato
+    global numCicliPulizia
     
     numCicliPrepara=int(tempidbmod.getNumCicliPrepara())
     timeVuoto=float(tempidbmod.getTimeVuoto())
@@ -167,6 +169,7 @@ def readtempi():
     timeBirraRiempimento=float(tempidbmod.getTimeBirraRiempimento())
     timeBirraAttesa=float(tempidbmod.getTimeBirraAttesa())
     timeSfiato=float(tempidbmod.getTimeSfiato())
+    numCicliPulizia=int(tempidbmod.getNumCicliPulizia())
 
     #f = open("/var/www/html/Birra/Tempi.txt", "r")
     #xnumCicliPrepara=f.readline()
@@ -329,6 +332,66 @@ def processoCompleto():
     riempimento()
     sfiata()
 
+def pulizia():
+    for x in range(0,numCicliPrepara):
+        lcd.clear()
+        lcd.message('CICLO PULIZIA N° \n'+str(x)+' DI '+str(numCicliPrepara))
+
+        sleep = 10
+
+        setUscita(birra,True)
+
+        setUscita(sfiato,True)
+        time.sleep(sleep)
+        setUscita(sfiato,False)
+
+        setUscita(spunding,True)
+        time.sleep(sleep)
+        setUscita(spunding,False)
+
+        setUscita(co2,True)
+        time.sleep(sleep)
+        setUscita(co2,False)
+
+        setUscita(vuoto1,True)
+        time.sleep(sleep)
+        setUscita(vuoto1,False)
+
+        #######
+
+        fastsleep=0,5
+
+        for x in range(0,3):
+            setUscita(birra,False)
+            time.sleep(fastsleep)
+            setUscita(birra,True)
+
+            setUscita(sfiato,True)
+            time.sleep(fastsleep)
+            setUscita(sfiato,False)
+
+            setUscita(spunding,True)
+            time.sleep(fastsleep)
+            setUscita(spunding,False)
+
+            setUscita(co2,True)
+            time.sleep(fastsleep)
+            setUscita(co2,False)
+
+            setUscita(vuoto1,True)
+            time.sleep(fastsleep)
+            setUscita(vuoto1,False)
+
+            setUscita(birra,False)
+
+        lcd.clear()
+        lcd.message('AMMOLLO N° \n'+str(x)+' DI '+str(numCicliPrepara))
+
+        time.sleep(10)
+
+    lcd.clear()
+    lcd.message('CICLI PULIZIA\nFINITI')
+
 def loop():
     while True:
         time.sleep(0.1)
@@ -361,6 +424,8 @@ class thread_with_exception(threading.Thread):
                 sfiata()
             if self.name=='processoCompleto':
                 processoCompleto()
+            if self.name=='pulizia':
+                pulizia()
                 
             writerunning(False)
             #GPIO.remove_event_detect(button6)
@@ -399,7 +464,7 @@ def threadCo2(channel):
         writerunning(True)
         GPIO.remove_event_detect(button6)
         thCo2 = thread_with_exception('preparaCo2') 
-        GPIO.add_event_detect(button6, GPIO.FALLING, callback=lambda a:threadReset(thCo2), bouncetime=2000)
+        GPIO.add_event_detect(button6, GPIO.FALLING, callback=lambda a:threadReset(thCo2), bouncetime=1000)
         thCo2.start()
 
 def threadRiempimento(channel):
@@ -412,7 +477,7 @@ def threadRiempimento(channel):
         writerunning(True)
         GPIO.remove_event_detect(button6)
         thRiempimento = thread_with_exception('riempimento') 
-        GPIO.add_event_detect(button6, GPIO.FALLING, callback=lambda a:threadReset(thRiempimento), bouncetime=2000)
+        GPIO.add_event_detect(button6, GPIO.FALLING, callback=lambda a:threadReset(thRiempimento), bouncetime=1000)
         thRiempimento.start()
 
 def threadRiempimentoConTimer(channel):
@@ -424,7 +489,7 @@ def threadRiempimentoConTimer(channel):
         writerunning(True)
         GPIO.remove_event_detect(button6)
         thRiempimentoConTimer = thread_with_exception('riempimentoConTimer')
-        GPIO.add_event_detect(button6, GPIO.FALLING, callback=lambda a:threadReset(thRiempimentoConTimer), bouncetime=2000)
+        GPIO.add_event_detect(button6, GPIO.FALLING, callback=lambda a:threadReset(thRiempimentoConTimer), bouncetime=1000)
         thRiempimentoConTimer.start()
     
 def threadSfiata(channel):
@@ -437,7 +502,7 @@ def threadSfiata(channel):
         writerunning(True)
         GPIO.remove_event_detect(button6)
         thSfiata = thread_with_exception('sfiata') 
-        GPIO.add_event_detect(button6, GPIO.FALLING, callback=lambda a:threadReset(thSfiata), bouncetime=2000)
+        GPIO.add_event_detect(button6, GPIO.FALLING, callback=lambda a:threadReset(thSfiata), bouncetime=1000)
         thSfiata.start()
 
 def threadProcessoCompleto(channel):
@@ -450,8 +515,21 @@ def threadProcessoCompleto(channel):
         writerunning(True)
         GPIO.remove_event_detect(button6)
         thProcessoCompleto = thread_with_exception('processoCompleto')
-        GPIO.add_event_detect(button6, GPIO.FALLING, callback=lambda a:threadReset(thProcessoCompleto), bouncetime=2000)
+        GPIO.add_event_detect(button6, GPIO.FALLING, callback=lambda a:threadReset(thProcessoCompleto), bouncetime=1000)
         thProcessoCompleto.start()
+
+def threadPulizia(channel):
+    global running
+    if not servizio:
+        readrunning(1)
+        
+    if not running:
+        writerunning(True)
+        GPIO.remove_event_detect(button6)
+        thPulizia = thread_with_exception('pulizia') 
+        GPIO.add_event_detect(button6, GPIO.FALLING, callback=lambda a:threadReset(thPulizia), bouncetime=1000)
+        thPulizia.start()
+
 
 def threadReset(t1):
     global running
@@ -480,7 +558,7 @@ def external_call(argv):
         sys.exit(2)
     for opt, arg in opts:
         if opt == '-h':
-            print ('Raspbeery.py -a <preparaCo2> <riempimento> <sfiata> <processoCompleto> <threadReset>')
+            print ('Raspbeery.py -a <preparaCo2> <riempimento> <sfiata> <processoCompleto> <pulizia> <threadReset>')
             sys.exit()
         elif opt in "-a":
             azione = arg
@@ -496,6 +574,8 @@ def external_call(argv):
             threadProcessoCompleto(channel)
         if azione=='threadReset':
             threadReset(channel)
+        if azione=='pulizia':
+            threadPulizia(channel)
 
 
 if __name__ == '__main__': # Program entrance

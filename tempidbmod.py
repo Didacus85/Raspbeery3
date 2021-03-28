@@ -88,6 +88,13 @@ def getNumCicliPrepara():
 	keytosearch="numCicliPrepara"
 	dataitem=filestoragemod.searchdata(DATAFILENAME,recordkey,recordvalue,keytosearch)
 	return dataitem
+
+def getNumCicliPulizia():
+	recordkey="name"
+	recordvalue="timesettings"
+	keytosearch="numCicliPulizia"
+	dataitem=filestoragemod.searchdata(DATAFILENAME,recordkey,recordvalue,keytosearch)
+	return dataitem
 	
 	
 def changesavesetting(FTparameter,FTvalue):
@@ -103,7 +110,7 @@ def changesavesetting(FTparameter,FTvalue):
 	
 def restoredefault():
 	filestoragemod.deletefile(DATAFILENAME)
-	filedata=[{"name": "timesettings", "numCicliPrepara": "2", "timeVuoto": "5", "timeCo2": "1", "timeCo2Sfiato": "1", "timeBirraRiempimento": "5", "timeBirraAttesa" : "3", "timeSfiato" : "5"}]
+	filedata=[{"name": "timesettings", "numCicliPrepara": "2", "timeVuoto": "5", "timeCo2": "1", "timeCo2Sfiato": "1", "timeBirraRiempimento": "5", "timeBirraAttesa" : "3", "timeSfiato" : "5", "numCicliPulizia": "2"}]
 	filestoragemod.savefiledata(DATAFILENAME,filedata)
 
 
