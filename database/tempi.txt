@@ -1,1 +1,1 @@
-{"name": "timesettings", "numCicliPrepara": "2", "numCicliPulizia": "2", "timeBirraAttesa": "3", "timeBirraRiempimento": "5", "timeCo2": "1", "timeCo2Sfiato": "1", "timeSfiato": "5", "timeVuoto": "4"}
+{"name": "timesettings", "numCicliPrepara": "2", "numCicliPulizia": "2", "timeBirraAttesa": "3", "timeBirraRiempimento": "5", "timeCo2": "1", "timeCo2Sfiato": "1", "timeSfiato": "5", "timeVuoto": "3"}
