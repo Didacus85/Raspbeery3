@@ -41,62 +41,13 @@
     100% { transform: rotate(360deg); }
   }
   
-  .blockbutton {
-    font-size: 30px;
-    font-family: "blink";
-    display: block;
-    height: 90px;
-    /* New Button Style option*/
-	  margin: 0 auto; /* Centra il Bottone nella Pagina*/
-    width: 90%; /* Larghezza Ridotta*/
-    border-radius: 10px; /* Bordi arrotondati */
-    background-color: #efefef;
-    /*color: white; colore testo*/
-    border: none;
-    /*padding: 15px 32px;*/
-    text-align: center;
-    text-decoration: none;
-    /*font-size: 16px;*/
-    box-shadow: 0 4px rgba(0,0,0,0.3); /* Ombra */
-  }
-
-  .blockbutton:hover { /* modifiche attivate al passaggio del mouse*/
-    background-color: #dcdedc;
-  }
-
-  .blockbutton:active { /* modifiche attivate al click del mouse*/
-    background-color: #dcdedc;
-    /* Prossime 2 righe effetto pulsante schiacciato*/
-    box-shadow: 0 1px #000;
-    transform: translateY(3px);
-  }
-
   .center {
     display: block;
     margin-left: auto;
     margin-right: auto;
     width: 8%;
   }
-  
-  .titolo{
-      text-align: center;
-      font-size: 50px;
-      color: white;
-  }
-  
-  body
-  {
-    background:
-      linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
-      linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
-      linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
-      linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
-      linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
-      linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
-    background-color: #131313;
-    background-size: 20px 20px;
-  }
-  
+    
   </style>
   <script>
   
@@ -126,7 +77,7 @@
   </tr>
   
   <tr>
-  <td><input type="submit" class="blockbutton" name="azione" onclick="fsetazione('pulizia')" value="PULIZIA"/></br>
+  <td><input type="submit" class="button" name="azione" onclick="fsetazione('pulizia')" value="PULIZIA"/></br>
   </td>
   </tr>
 
@@ -136,22 +87,22 @@
   </tr>
 
   <tr>
-  <td><input type="submit" class="blockbutton" name="azione" onclick="fsetazione('preparaCo2')" value="PREPARA Co2"/></br>
+  <td><input type="submit" class="button" name="azione" onclick="fsetazione('preparaCo2')" value="PREPARA Co2"/></br>
   </td>
   </tr>
   
   <tr>
-  <td><input type="submit" class="blockbutton" name="azione" onclick="fsetazione('riempimento')" value="RIEMPIMENTO"/></br>
+  <td><input type="submit" class="button" name="azione" onclick="fsetazione('riempimento')" value="RIEMPIMENTO"/></br>
   </td>
   </tr>
   
   <tr>
-  <td><input type="submit" class="blockbutton" name="azione" onclick="fsetazione('sfiata')" value="SFIATA"/></br>
+  <td><input type="submit" class="button" name="azione" onclick="fsetazione('sfiata')" value="SFIATA"/></br>
   </td>
   </tr>
   
   <tr>
-  <td><input type="submit" class="blockbutton" name="azione" onclick="fsetazione('processoCompleto')" value="PROCESSO COMPLETO"/></br>
+  <td><input type="submit" class="button" name="azione" onclick="fsetazione('processoCompleto')" value="PROCESSO COMPLETO"/></br>
   </td>
   </tr>
   </table>
