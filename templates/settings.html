@@ -43,55 +43,13 @@
     100% { transform: rotate(360deg); }
   }
   
-  .tempibutton {
-    font-size: 30px;
-    font-family: "blink";
-    display: block;
-    height: 90px;
-    margin: 0 auto; /* Centra il Bottone nella Pagina*/
-    width: 90%; /* Larghezza Ridotta*/
-    border-radius: 10px; /* Bordi arrotondati */
-    background-color: #efefef;
-    /* background-color: blue; */
-    /*color: white; colore testo*/
-    border: none;
-    /*padding: 15px 32px;*/
-    text-align: center;
-    text-decoration: none;
-    box-shadow: 0 4px rgba(0,0,0,0.3); /* Ombra */
-  }
-
-  .tempibutton:hover { /* modifiche attivate al passaggio del mouse*/
-    background-color: #dcdedc;
-  }
-
-  .tempibutton:active { /* modifiche attivate al click del mouse*/
-    background-color: #dcdedc;
-    /* Prossime 2 righe effetto pulsante schiacciato*/
-    box-shadow: 0 1px #000;
-    transform: translateY(3px);
-  }
-
   .center {
     display: block;
     margin-left: auto;
     margin-right: auto;
     width: 8%;
   }
-
-  body
-  {
-    background:
-      linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
-      linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
-      linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
-      linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
-      linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
-      linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
-    background-color: #131313;
-    background-size: 20px 20px;
-  }
-  
+    
   </style>
 
   <script>
@@ -165,9 +123,9 @@
   <tr>
   <td style="width:45%">
     <!--input type="button" name="tempistandard" class="tempibutton" onclick="numCicliPrepara.value='2';timeVuoto.value='0';timeCo2.value='1';timeCo2Sfiato.value='1';timeBirraRiempimento.value='5';timeBirraAttesa.value='3';timeSfiato.value='3';" value="Tempistandard"/-->
-  <input type="submit" class="tempibutton" name="impostatempi" value="IMPOSTA TEMPI"/>
+  <input type="submit" class="button" name="impostatempi" value="IMPOSTA TEMPI"/>
   </td>
-  <td colspan="2" style="width:45%"><input type="submit" class="tempibutton" name="impostatempi" value="TEMPI STANDARD"/>
+  <td colspan="2" style="width:45%"><input type="submit" class="button" name="impostatempi" value="TEMPI STANDARD"/>
   </td>
   </tr>
   </table>
