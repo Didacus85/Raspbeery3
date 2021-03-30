@@ -337,7 +337,7 @@ def pulizia():
         lcd.clear()
         lcd.message('CICLO PULIZIA N° \n'+str(x+1)+' DI '+str(numCicliPrepara))
 
-        sleep = 10
+        sleep = 4
 
         setUscita(birra,True)
 
