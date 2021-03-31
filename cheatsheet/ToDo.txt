@@ -1,16 +1,25 @@
 ---------------------------------------------------------------------------
 NON GRAPHICS:
 
-bottone start e stop servizo raspbeery.service
 provare a importare raspbeery.py direttamente in app.py
+provare ad eliminare raspbeery_1.py
 
+mettere in Home Page le statistiche
+numero di bottiglie imbottigliate totali e delle varie sessioni
+contare le sessioni di imbottigliamento per giornata
+aggiungere contatori per numero di volte attivate le singole elettrovalvole
+minuti totali di imbottigliamento
+minuti imbottigliamento ultima sessione
+minuti pompa vuoto
+salvare in un file che verrà messo in git ignore per non farlo sovrascrivere tutte le volte che si scarica da git
 
+inserire form per tenere traccia del nome birra che si sta imbottigliando in quella sessione
 
 ---------------------------------------------------------------------------
 
 GRAPHICS:
 
-i bottoni pagina Settings sbordano nella visualizzazione da mobile
+
 
 
 
