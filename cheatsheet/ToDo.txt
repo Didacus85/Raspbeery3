@@ -14,6 +14,8 @@ minuti pompa vuoto
 salvare in un file che verrà messo in git ignore per non farlo sovrascrivere tutte le volte che si scarica da git
 
 inserire form per tenere traccia del nome birra che si sta imbottigliando in quella sessione
+peso co2 prima dell' imbottigliamento 
+peso co2 dopo l' imbottigliamento 
 
 ---------------------------------------------------------------------------
 
