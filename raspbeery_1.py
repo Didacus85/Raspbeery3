@@ -43,7 +43,7 @@ numCicliPrepara=0
 numCicliPulizia=0
 
 running = False
-relayAttivoOnHigh=False;
+relayAttivoOnHigh=False
 
 lcd=1
 
@@ -104,6 +104,20 @@ def setup():
         GPIO.add_event_detect(button5, GPIO.FALLING, callback=threadProcessoCompleto, bouncetime=1000)
         GPIO.add_event_detect(ricezionerunning, GPIO.BOTH, callback=readrunning, bouncetime=300)
         #GPIO.add_event_detect(button6, GPIO.FALLING, callback=threadReset, bouncetime=5000)
+
+def debounceinput(button):
+    sleep(0.005) # debounce for 5mSec
+    if GPIO.input(button)!=GPIO.LOW:
+        print('Debounceinput KO')
+        return
+
+    sleep(0.005)
+    if GPIO.input(button)!=GPIO.LOW:
+        print('Debounceinput KO')
+        return
+
+    print('Debounceinput OK')
+
 
 def setuplcd():
     global lcd
@@ -455,9 +469,9 @@ class thread_with_exception(threading.Thread):
 #t1 = threading.Thread(target=preparaCo2, args=())
     
 def threadCo2(channel):
+    debounceinput(button1)
     global running
     if not servizio:
-        #$$ scommentare in Raspbeery_1
         readrunning(1)
         
     if not running:
@@ -468,9 +482,9 @@ def threadCo2(channel):
         thCo2.start()
 
 def threadRiempimento(channel):
+    debounceinput(button2)
     global running
     if not servizio:
-        #$$ scommentare in Raspbeery_1
         readrunning(1)
         
     if not running:
@@ -481,9 +495,9 @@ def threadRiempimento(channel):
         thRiempimento.start()
 
 def threadRiempimentoConTimer(channel):
+    debounceinput(button3)
     global running
     if not servizio:
-        #$$ scommentare in Raspbeery_1
         readrunning(1)
     if not running:
         writerunning(True)
@@ -493,9 +507,9 @@ def threadRiempimentoConTimer(channel):
         thRiempimentoConTimer.start()
     
 def threadSfiata(channel):
+    debounceinput(button4)
     global running
     if not servizio:
-        #$$ scommentare in Raspbeery_1
         readrunning(1)
         
     if not running:
@@ -506,9 +520,9 @@ def threadSfiata(channel):
         thSfiata.start()
 
 def threadProcessoCompleto(channel):
+    debounceinput(button5)
     global running
     if not servizio:
-        #$$ scommentare in Raspbeery_1
         readrunning(1)
         
     if not running:
@@ -519,6 +533,7 @@ def threadProcessoCompleto(channel):
         thProcessoCompleto.start()
 
 def threadPulizia(channel):
+    debounceinput(button6)
     global running
     if not servizio:
         readrunning(1)
@@ -535,7 +550,6 @@ def threadReset(t1):
     global running
     #per ora non viene usata da web
     #if not servizio:
-        #$$ scommentare in Raspbeery_1
      #   readrunning(1)
 
     t1.raise_exception()
