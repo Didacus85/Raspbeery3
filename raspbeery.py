@@ -106,12 +106,12 @@ def setup():
         #GPIO.add_event_detect(button6, GPIO.FALLING, callback=threadReset, bouncetime=5000)
 
 def debounceinput(button):
-    sleep(0.005) # debounce for 5mSec
+    time.sleep(0.005) # debounce for 5mSec
     if GPIO.input(button)!=GPIO.LOW:
         print('Debounceinput KO')
         return
 
-    sleep(0.005)
+    time.sleep(0.005)
     if GPIO.input(button)!=GPIO.LOW:
         print('Debounceinput KO')
         return
