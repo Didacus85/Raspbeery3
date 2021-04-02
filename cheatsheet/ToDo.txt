@@ -1,6 +1,9 @@
 ---------------------------------------------------------------------------
 NON GRAPHICS:
 
+passare a GPIOZERO
+https://gpiozero.readthedocs.io/en/stable/recipes.html
+
 provare a importare raspbeery.py direttamente in app.py
 provare ad eliminare raspbeery_1.py
 
