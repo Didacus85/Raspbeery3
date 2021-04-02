@@ -21,6 +21,11 @@ inserire form per tenere traccia del nome birra che si sta imbottigliando in que
 peso co2 prima dell' imbottigliamento 
 peso co2 dopo l' imbottigliamento 
 
+
+
+gestione reti, fare pagina per salvare nuove reti
+
+
 ---------------------------------------------------------------------------
 
 GRAPHICS:
