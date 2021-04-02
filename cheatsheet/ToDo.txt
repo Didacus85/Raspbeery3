@@ -8,6 +8,7 @@ provare a importare raspbeery.py direttamente in app.py
 provare ad eliminare raspbeery_1.py
 
 mettere in Home Page le statistiche
+Temperatura Raspberry
 numero di bottiglie imbottigliate totali e delle varie sessioni
 contare le sessioni di imbottigliamento per giornata
 aggiungere contatori per numero di volte attivate le singole elettrovalvole
