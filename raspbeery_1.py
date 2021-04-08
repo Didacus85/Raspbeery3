@@ -20,7 +20,8 @@ birra = 10
 spunding = 9
 sfiato = 11
 rele7 = 5
-pompa = 6
+rele8 = 6
+ssr = 13
 
 comandorunning = 19
 ricezionerunning = 26
@@ -61,6 +62,14 @@ def setUscita(uscita, stato):
         if not stato:
             GPIO.output(uscita, GPIO.HIGH)
 
+def setUscitaSSR(uscita, stato):
+    #i relè SSR funzionano solo in un modo
+    if stato:
+        GPIO.output(uscita, GPIO.HIGH)
+    if not stato:
+        GPIO.output(uscita, GPIO.LOW)
+
+
 def setuprunning():
     GPIO.setmode(GPIO.BCM) # use BCM mode
     GPIO.setwarnings(False)
@@ -85,8 +94,11 @@ def setup():
     setUscita(sfiato,False)
     GPIO.setup(rele7, GPIO.OUT)
     setUscita(rele7,False)
-    GPIO.setup(pompa, GPIO.OUT)
-    setUscita(pompa,False)
+    GPIO.setup(rele8, GPIO.OUT)
+    setUscita(rele8,False)
+    GPIO.setup(ssr, GPIO.OUT)
+    setUscitaSSR(ssr,False)
+    
 
     GPIO.setup(button1, GPIO.IN, pull_up_down=GPIO.PUD_UP)
     GPIO.setup(button2, GPIO.IN, pull_up_down=GPIO.PUD_UP)
@@ -241,30 +253,31 @@ def chiudiTutto():
     setUscita(spunding,False)
     setUscita(sfiato,False)
     setUscita(rele7,False)
-    setUscita(pompa,False)
+    setUscita(rele8,False)
+    setUscitaSSR(ssr,False)
 
 def preparaCo2():
     lcd.clear()
     if timeVuoto > 0:
         lcd.message('PREPARA  '+str(numCicliPrepara) + ' Cicli\n( '+str(timeVuoto)+'s - '+str(timeCo2)+'s )')
-        setUscita(pompa,True)
+        setUscitaSSR(ssr,True)
         setUscita(vuoto1,True)
         setUscita(vuoto2,True)
         time.sleep(timeVuoto)
         setUscita(vuoto1,False)
         setUscita(vuoto2,False)
-        setUscita(pompa,False)
+        setUscitaSSR(ssr,False)
         for x in range(1,numCicliPrepara):
             setUscita(co2,True)
             time.sleep(timeCo2)
             setUscita(co2,False)
-            setUscita(pompa,True)
+            setUscitaSSR(ssr,True)
             setUscita(vuoto1,True)
             setUscita(vuoto2,True)
             time.sleep(timeVuoto)
             setUscita(vuoto1,False)
             setUscita(vuoto2,False)
-            setUscita(pompa,False)
+            setUscitaSSR(ssr,False)
         
     if timeVuoto <= 0 or timeVuoto == '':
         lcd.message('PREPARA  '+str(numCicliPrepara) + ' Cicli\n( '+str(timeCo2)+'s - '+str(timeCo2Sfiato)+'s )')
