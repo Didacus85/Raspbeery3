@@ -265,7 +265,7 @@ def preparaCo2():
         setUscita(vuoto2,True)
         time.sleep(timeVuoto)
         setUscita(vuoto1,False)
-        setUscita(vuoto2,False)
+        #setUscita(vuoto2,False)
         #setUscitaSSR(ssr,False)
         for x in range(1,numCicliPrepara):
             setUscita(co2,True)
@@ -273,11 +273,12 @@ def preparaCo2():
             setUscita(co2,False)
             #etUscitaSSR(ssr,True)
             setUscita(vuoto1,True)
-            setUscita(vuoto2,True)
+            #setUscita(vuoto2,True)
             time.sleep(timeVuoto)
             setUscita(vuoto1,False)
-            setUscita(vuoto2,False)
+            #setUscita(vuoto2,False)
             #setUscitaSSR(ssr,False)
+        setUscita(vuoto2,False)
         setUscitaSSR(ssr,False)
         
     if timeVuoto <= 0 or timeVuoto == '':
