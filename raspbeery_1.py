@@ -266,18 +266,19 @@ def preparaCo2():
         time.sleep(timeVuoto)
         setUscita(vuoto1,False)
         setUscita(vuoto2,False)
-        setUscitaSSR(ssr,False)
+        #setUscitaSSR(ssr,False)
         for x in range(1,numCicliPrepara):
             setUscita(co2,True)
             time.sleep(timeCo2)
             setUscita(co2,False)
-            setUscitaSSR(ssr,True)
+            #etUscitaSSR(ssr,True)
             setUscita(vuoto1,True)
             setUscita(vuoto2,True)
             time.sleep(timeVuoto)
             setUscita(vuoto1,False)
             setUscita(vuoto2,False)
-            setUscitaSSR(ssr,False)
+            #setUscitaSSR(ssr,False)
+        setUscitaSSR(ssr,False)
         
     if timeVuoto <= 0 or timeVuoto == '':
         lcd.message('PREPARA  '+str(numCicliPrepara) + ' Cicli\n( '+str(timeCo2)+'s - '+str(timeCo2Sfiato)+'s )')
