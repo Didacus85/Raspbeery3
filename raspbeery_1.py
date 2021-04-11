@@ -263,7 +263,7 @@ def preparaCo2():
         lcd.message('PREPARA  '+str(numCicliPrepara) + ' Cicli\n( '+str(timeVuoto)+'s - '+str(timeCo2)+'s )')
         setUscitaSSR(ssr,True)
         setUscita(vuoto1,True)
-        setUscita(vuoto2,True)
+        #setUscita(vuoto2,True)
         time.sleep(timeVuoto)
         setUscita(vuoto1,False)
         #setUscita(vuoto2,False)
@@ -279,7 +279,7 @@ def preparaCo2():
             setUscita(vuoto1,False)
             #setUscita(vuoto2,False)
             #setUscitaSSR(ssr,False)
-        setUscita(vuoto2,False)
+        #setUscita(vuoto2,False)
         setUscitaSSR(ssr,False)
         
     if timeVuoto <= 0 or timeVuoto == '':
@@ -292,8 +292,10 @@ def preparaCo2():
             setUscita(co2,False)
             #lcd.clear()
             #lcd.message('PREPARAZIONE\nSFIATO '+str(timeCo2Sfiato)+'s')
+            setUscita(vuoto2,True)
             setUscita(sfiato,True)
             time.sleep(timeCo2Sfiato)
+            setUscita(vuoto2,False)
             setUscita(sfiato,False)
             #lcd.clear()
 
@@ -310,10 +312,12 @@ def riempimento():
     lcd.clear()
     lcd.message('RIEMPIMENTO '+str(timeBirraRiempimento)+'s')
     setUscita(birra,True)
+    setUscita(vuoto2,True)
     setUscita(spunding,True)
     time.sleep(timeBirraRiempimento)
     
     setUscita(birra,False)
+    setUscita(vuoto2,False)
     setUscita(spunding,False)
     lcd.clear()
     lcd.message('STABILIZZAZIONE\n'+str(timeBirraAttesa)+'s\n')
@@ -329,10 +333,12 @@ def riempimentoConTimer():
     startTime = time.time()
     while GPIO.input(button3)==GPIO.LOW:
         setUscita(birra,True)
+        setUscita(vuoto2,True)
         setUscita(spunding,True)
         #time.sleep(timeBirraRiempimento)
     
     setUscita(birra,False)
+    setUscita(vuoto2,False)
     setUscita(spunding,False)
     endTime = time.time()
     diffTime = round(endTime-startTime,1)
@@ -350,8 +356,10 @@ def riempimentoConTimer():
 def sfiata():
     lcd.clear()
     lcd.message('RILASCIO SCHIUMA\n'+str(timeSfiato)+'s')
+    setUscita(vuoto2,True)
     setUscita(sfiato,True)
     time.sleep(timeSfiato)
+    setUscita(vuoto2,False)
     setUscita(sfiato,False)
     lcd.clear()
     lcd.message('RILASCIO SCHIUMA\nFINITO')
@@ -367,9 +375,10 @@ def pulizia():
         lcd.clear()
         lcd.message('CICLO PULIZIA N° \n'+str(x+1)+' DI '+str(numCicliPrepara))
 
-        sleep = 4
+        sleep = 2
 
         setUscita(birra,True)
+        setUscita(vuoto2,True)
 
         setUscita(sfiato,True)
         time.sleep(sleep)
@@ -379,13 +388,13 @@ def pulizia():
         time.sleep(sleep)
         setUscita(spunding,False)
 
-        setUscita(co2,True)
-        time.sleep(sleep)
-        setUscita(co2,False)
-
         setUscita(vuoto1,True)
         time.sleep(sleep)
         setUscita(vuoto1,False)
+
+        setUscita(co2,True)
+        time.sleep(sleep)
+        setUscita(co2,False)
 
         #######
 
@@ -396,6 +405,10 @@ def pulizia():
             time.sleep(fastsleep)
             setUscita(birra,True)
 
+            setUscita(vuoto2,False)
+            time.sleep(fastsleep)
+            setUscita(vuoto2,True)
+
             setUscita(sfiato,True)
             time.sleep(fastsleep)
             setUscita(sfiato,False)
@@ -404,15 +417,15 @@ def pulizia():
             time.sleep(fastsleep)
             setUscita(spunding,False)
 
-            setUscita(co2,True)
-            time.sleep(fastsleep)
-            setUscita(co2,False)
-
             setUscita(vuoto1,True)
             time.sleep(fastsleep)
             setUscita(vuoto1,False)
 
-            setUscita(birra,False)
+            setUscita(co2,True)
+            time.sleep(fastsleep)
+            setUscita(co2,False)
+
+            chiudiTutto()
 
         lcd.clear()
         lcd.message('AMMOLLO N° \n'+str(x+1)+' DI '+str(numCicliPrepara))
