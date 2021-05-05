@@ -1,6 +1,9 @@
 ---------------------------------------------------------------------------
 NON GRAPHICS:
 
+aggiungere mezzo secondo di pausa tra co2 e vuoto
+non far aprire la valvola vuoto2 quando si deve scaricare
+
 passare a GPIOZERO
 https://gpiozero.readthedocs.io/en/stable/recipes.html
 
