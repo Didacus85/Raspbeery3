@@ -33,6 +33,13 @@ button4 = 25
 button5 = 12
 button6 = 16
 
+button7 = 7
+button8 = 8
+button9 = 20
+button10 = 21
+
+sensoreLivello = 1
+
 timeVuoto = 0
 timeVuotoStabilize = 0.5
 timeCo2 = 0
@@ -107,6 +114,11 @@ def setup():
     GPIO.setup(button4, GPIO.IN, pull_up_down=GPIO.PUD_UP)
     GPIO.setup(button5, GPIO.IN, pull_up_down=GPIO.PUD_UP)
     GPIO.setup(button6, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+    GPIO.setup(button7, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+    GPIO.setup(button8, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+    GPIO.setup(button9, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+    GPIO.setup(button10, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+    GPIO.setup(sensoreLivello, GPIO.IN, pull_up_down=GPIO.PUD_UP)
     
     if servizio:
         #$$ Commentare tutti gli add_event in Raspbeery_1
@@ -314,7 +326,9 @@ def riempimento():
     setUscita(birra,True)
     #setUscita(vuoto2,True)
     setUscita(spunding,True)
-    time.sleep(timeBirraRiempimento)
+
+    while GPIO.input(sensoreLivello)==GPIO.HIGH:
+        time.sleep(timeBirraRiempimento)
     
     setUscita(birra,False)
     #setUscita(vuoto2,False)
