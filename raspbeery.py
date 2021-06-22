@@ -327,17 +327,10 @@ def riempimento():
     #setUscita(vuoto2,True)
     setUscita(spunding,True)
 
-    timeoutBirraRiempimento = timeBirraRiempimento*1000;
-    sensoreLivello = GPIO.wait_for_edge(sensoreLivello, GPIO_FALLING, timeout=timeoutBirraRiempimento)
-    if channel is None:
-        lcd.clear()
-        lcd.message('Timeout')
-    else:
-        lcd.clear()
-        lcd.message('Sensore')
-
-    #while GPIO.input(sensoreLivello)==GPIO.LOW:
-    #    time.sleep(timeBirraRiempimento)
+    tempo=0
+    while GPIO.input(sensoreLivello)==GPIO.LOW and tempo<=timeBirraRiempimento:
+        time.sleep(0.1)
+        tempo=round(tempo+0.1,2)
     
     setUscita(birra,False)
     #setUscita(vuoto2,False)
