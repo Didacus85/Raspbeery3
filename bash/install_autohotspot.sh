@@ -1,5 +1,12 @@
 
-tar -xzvf AutoHotspot-Setup.tar.gz
-cd autohotspot
+
+install_Autohotspot ()
+{
+# --- INSTALL Autohotspot software
+cd /home/pi/env/Raspbeery3/bash/Autohotspot
+sudo chmod +x autohotspot-setup.sh
 sudo ./autohotspot-setup.sh
-1
+
+}
+
+install_Autohotspot
