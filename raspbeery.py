@@ -337,17 +337,20 @@ def riempimento():
     #            break
 
     while tempo<=timeBirraRiempimento:
-        time.sleep(0.1)
-        tempo=round(tempo+0.1,2)
+        time.sleep(0.01)
+        tempo=round(tempo+0.01,2)
         if GPIO.input(sensoreLivello)==GPIO.HIGH:
-            time.sleep(0.05)
+            time.sleep(0.01)
             if GPIO.input(sensoreLivello)==GPIO.HIGH:
-                timeBirraRiempimento=tempo-1
-                break    
-
+                break
+    
     setUscita(birra,False)
     #setUscita(vuoto2,False)
     setUscita(spunding,False)
+
+    timeBirraRiempimento=tempo-1
+    writetempi()
+
     lcd.clear()
     lcd.message('STABILIZZAZIONE\n'+str(timeBirraAttesa)+'s\n')
     time.sleep(timeBirraAttesa)
