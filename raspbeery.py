@@ -321,6 +321,7 @@ def preparaCo2():
 
 
 def riempimento():
+    global timeBirraRiempimento
     lcd.clear()
     lcd.message('RIEMPIMENTO '+str(timeBirraRiempimento)+'s')
     setUscita(birra,True)
@@ -335,12 +336,14 @@ def riempimento():
     #        if GPIO.input(sensoreLivello)==GPIO.HIGH:
     #            break
 
-    while GPIO.input(sensoreLivello)==GPIO.LOW and tempo<=timeBirraRiempimento:
+    while tempo<=timeBirraRiempimento:
         time.sleep(0.1)
         tempo=round(tempo+0.1,2)
-
-    #if tempo > 10:
-    #    timeBirraRiempimento=tempo-1
+        if GPIO.input(sensoreLivello)==GPIO.HIGH:
+            time.sleep(0.05)
+            if GPIO.input(sensoreLivello)==GPIO.HIGH:
+                timeBirraRiempimento=tempo-1
+                break    
 
     setUscita(birra,False)
     #setUscita(vuoto2,False)
