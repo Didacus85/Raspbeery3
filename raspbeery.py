@@ -330,9 +330,9 @@ def riempimento():
     tempo=0
     for tempo in range(0,timeBirraRiempimento,0.1):
         time.sleep(0.1)
-        if GPIO.input(sensoreLivello)==GPIO.LOW:
+        if GPIO.input(sensoreLivello)==GPIO.HIGH:
             time.sleep(0.1)
-            if GPIO.input(sensoreLivello)==GPIO.LOW:
+            if GPIO.input(sensoreLivello)==GPIO.HIGH:
                 break
 
     #while GPIO.input(sensoreLivello)==GPIO.LOW and tempo<=timeBirraRiempimento:
