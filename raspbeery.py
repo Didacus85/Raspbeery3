@@ -329,9 +329,10 @@ def riempimento():
 
     tempo=0
     while GPIO.input(sensoreLivello)==GPIO.LOW and tempo<=timeBirraRiempimento:
-        time.sleep(0.01)
-        tempo=round(tempo+0.01,2)
+        time.sleep(0.05)
+        tempo=round(tempo+0.05,2)
     
+    timeBirraRiempimento=tempo-1
     setUscita(birra,False)
     #setUscita(vuoto2,False)
     setUscita(spunding,False)
