@@ -297,7 +297,7 @@ def settings():
 			
 	
 
-	return render_template('settings.html', numCicliPulizia=tempidbmod.getNumCicliPrepara(), numCicliPrepara=tempidbmod.getNumCicliPrepara(), timeVuoto=tempidbmod.getTimeVuoto(), timeCo2=tempidbmod.getTimeCo2(), timeCo2Sfiato=tempidbmod.getTimeCo2Sfiato(), timeBirraRiempimento=tempidbmod.getTimeBirraRiempimento(), timeBirraAttesa=tempidbmod.getTimeBirraAttesa(), timeSfiato=tempidbmod.getTimeSfiato() )
+	return render_template('settings.html', numCicliPulizia=tempidbmod.getNumCicliPulizia(), numCicliPrepara=tempidbmod.getNumCicliPrepara(), timeVuoto=tempidbmod.getTimeVuoto(), timeCo2=tempidbmod.getTimeCo2(), timeCo2Sfiato=tempidbmod.getTimeCo2Sfiato(), timeBirraRiempimento=tempidbmod.getTimeBirraRiempimento(), timeBirraAttesa=tempidbmod.getTimeBirraAttesa(), timeSfiato=tempidbmod.getTimeSfiato() )
 
 
 @app.route('/system/', methods=['GET', 'POST'])
@@ -345,7 +345,12 @@ def actions():
 	if request.method == 'POST':
 		os.system('sudo python3 /home/pi/env/Raspbeery3/raspbeery_1.py -a"'+request.form['azionetxt']+'"')
 			
-	return render_template('actions.html' )
+	return render_template('actions.html')
+
+@app.route('/wifi/', methods=['GET', 'POST'])
+def wifi():
+	
+	return render_template('wifi.html', nomeRete="name", passwordRete="1234" )
 
 
 if __name__ == "__main__":

@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% set active_page = "home" %}
+{% block body %}
+<style>
+
+</style>
+
+<body>
+	<h1 class="titolo">Network<h1>
+  <br><br>
+  <p>{{ nomeRete }}
+    {{ passwordRete }}</p>
+  <img src="{{url_for('static', filename='hop-logo.png')}}" class="center" style="width:200px; height: 200px;">
+</body>
+
+{% endblock %}
