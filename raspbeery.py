@@ -347,9 +347,10 @@ def riempimento():
     setUscita(birra,False)
     #setUscita(vuoto2,False)
     setUscita(spunding,False)
-
-    timeBirraRiempimento=tempo-1
-    writetempi()
+    
+    if(tempo<timeBirraRiempimento):
+        timeBirraRiempimento=tempo-1
+        writetempi()
 
     lcd.clear()
     lcd.message('STABILIZZAZIONE\n'+str(timeBirraAttesa)+'s\n')
