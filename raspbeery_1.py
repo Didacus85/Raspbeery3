@@ -347,9 +347,10 @@ def riempimento():
     setUscita(birra,False)
     #setUscita(vuoto2,False)
     setUscita(spunding,False)
-
-    timeBirraRiempimento=tempo-1
-    writetempi()
+    
+    if(tempo<timeBirraRiempimento):
+        timeBirraRiempimento=tempo-1
+        writetempi()
 
     lcd.clear()
     lcd.message('STABILIZZAZIONE\n'+str(timeBirraAttesa)+'s\n')
@@ -403,9 +404,9 @@ def processoCompleto():
     sfiata()
 
 def pulizia():
-    for x in range(0,numCicliPrepara):
+    for x in range(0,numCicliPulizia):
         lcd.clear()
-        lcd.message('CICLO PULIZIA N° \n'+str(x+1)+' DI '+str(numCicliPrepara))
+        lcd.message('CICLO PULIZIA N° \n'+str(x+1)+' DI '+str(numCicliPulizia))
 
         sleep = 2
 
@@ -460,7 +461,7 @@ def pulizia():
             chiudiTutto()
 
         lcd.clear()
-        lcd.message('AMMOLLO N° \n'+str(x+1)+' DI '+str(numCicliPrepara))
+        lcd.message('AMMOLLO N° \n'+str(x+1)+' DI '+str(numCicliPulizia))
 
         time.sleep(10)
 
