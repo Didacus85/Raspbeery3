@@ -82,6 +82,13 @@ def getTimeVuoto():
 	dataitem=filestoragemod.searchdata(DATAFILENAME,recordkey,recordvalue,keytosearch)
 	return dataitem
 
+def getTimeAnticipo():
+	recordkey="name"
+	recordvalue="timesettings"
+	keytosearch="timeAnticipo"
+	dataitem=filestoragemod.searchdata(DATAFILENAME,recordkey,recordvalue,keytosearch)
+	return dataitem
+
 def getNumCicliPrepara():
 	recordkey="name"
 	recordvalue="timesettings"
@@ -110,7 +117,7 @@ def changesavesetting(FTparameter,FTvalue):
 	
 def restoredefault():
 	filestoragemod.deletefile(DATAFILENAME)
-	filedata=[{"name": "timesettings", "numCicliPrepara": "2", "timeVuoto": "5", "timeCo2": "1", "timeCo2Sfiato": "1", "timeBirraRiempimento": "5", "timeBirraAttesa" : "3", "timeSfiato" : "5", "numCicliPulizia": "2"}]
+	filedata=[{"name": "timesettings", "numCicliPrepara": "2", "timeVuoto": "5", "timeCo2": "1", "timeCo2Sfiato": "1", "timeBirraRiempimento": "5", "timeBirraAttesa": "3", "timeSfiato": "5", "timeAnticipo": "1", "numCicliPulizia": "2"}]
 	filestoragemod.savefiledata(DATAFILENAME,filedata)
 
 

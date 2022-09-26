@@ -47,6 +47,7 @@ timeCo2Sfiato = 0
 timeBirraRiempimento = 0
 timeBirraAttesa = 0
 timeSfiato = 0
+timeAnticipo = 0
 
 numCicliPrepara=0
 numCicliPulizia=0
@@ -200,6 +201,7 @@ def readtempi():
     global timeBirraRiempimento
     global timeBirraAttesa
     global timeSfiato
+    global timeAnticipo
     global numCicliPulizia
     
     numCicliPrepara=int(tempidbmod.getNumCicliPrepara())
@@ -209,6 +211,7 @@ def readtempi():
     timeBirraRiempimento=float(tempidbmod.getTimeBirraRiempimento())
     timeBirraAttesa=float(tempidbmod.getTimeBirraAttesa())
     timeSfiato=float(tempidbmod.getTimeSfiato())
+    timeAnticipo=float(tempidbmod.getTimeAnticipo())
     numCicliPulizia=int(tempidbmod.getNumCicliPulizia())
 
     #f = open("/var/www/html/Birra/Tempi.txt", "r")
@@ -349,7 +352,7 @@ def riempimento():
     setUscita(spunding,False)
     
     if(tempo<timeBirraRiempimento):
-        timeBirraRiempimento=tempo-1
+        timeBirraRiempimento=tempo-timeAnticipo
         writetempi()
 
     lcd.clear()
@@ -463,7 +466,7 @@ def pulizia():
         lcd.clear()
         lcd.message('AMMOLLO N° \n'+str(x+1)+' DI '+str(numCicliPulizia))
 
-        time.sleep(10)
+        time.sleep(5)
 
     lcd.clear()
     lcd.message('CICLI PULIZIA\nFINITI')

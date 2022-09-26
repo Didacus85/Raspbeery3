@@ -287,17 +287,20 @@ def settings():
 			timeSfiato = request.form['timeSfiato']
 			tempidbmod.changesavesetting("timeSfiato", timeSfiato)
 
+			timeAnticipo = request.form['timeAnticipo']
+			tempidbmod.changesavesetting("timeAnticipo", timeAnticipo)
+
 			flash('MODIFICA EFFETTUATA', category="success")
 
-		if request.form['impostatempi'] == "Tempistandard":
-			print("Tempistandard ")
+		if request.form['impostatempi'] == "TEMPI STANDARD":
+			print("TEMPI STANDARD ")
 			tempidbmod.restoredefault()
 			
 			flash('MODIFICA EFFETTUATA', category="success")
 			
 	
 
-	return render_template('settings.html', numCicliPulizia=tempidbmod.getNumCicliPulizia(), numCicliPrepara=tempidbmod.getNumCicliPrepara(), timeVuoto=tempidbmod.getTimeVuoto(), timeCo2=tempidbmod.getTimeCo2(), timeCo2Sfiato=tempidbmod.getTimeCo2Sfiato(), timeBirraRiempimento=tempidbmod.getTimeBirraRiempimento(), timeBirraAttesa=tempidbmod.getTimeBirraAttesa(), timeSfiato=tempidbmod.getTimeSfiato() )
+	return render_template('settings.html', numCicliPulizia=tempidbmod.getNumCicliPulizia(), numCicliPrepara=tempidbmod.getNumCicliPrepara(), timeVuoto=tempidbmod.getTimeVuoto(), timeCo2=tempidbmod.getTimeCo2(), timeCo2Sfiato=tempidbmod.getTimeCo2Sfiato(), timeBirraRiempimento=tempidbmod.getTimeBirraRiempimento(), timeBirraAttesa=tempidbmod.getTimeBirraAttesa(), timeSfiato=tempidbmod.getTimeSfiato(), timeAnticipo=tempidbmod.getTimeAnticipo() )
 
 
 @app.route('/system/', methods=['GET', 'POST'])
