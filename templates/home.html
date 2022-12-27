@@ -7,6 +7,20 @@
 
 <body>
 	<h1 class="titolo">HOME PAGE<h1>
+    <br><br>
+    
+    <table width="100%" border="0">
+      <tr>
+        <td><input type="submit" class="button" name="ACTIONS" onclick="location.href='/actions/'" value="ACTIONS"/></br>
+      <tr></tr>
+        <td><input type="submit" class="button" name="SETTINGS" onclick="location.href='/settings/'" value="SETTINGS"/></br>
+      <tr></tr>
+        <td><input type="submit" class="button" name="SYSTEM" onclick="location.href='/system/'" value="SYSTEM"/></br>
+
+      </tr>
+    </table>
+
+
   <br><br>
   <img src="{{url_for('static', filename='hop-logo.png')}}" class="center" style="width:200px; height: 200px;">
 </body>
