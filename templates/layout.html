@@ -153,6 +153,7 @@
 	{% if active_page != "" %} <!-- if activepage = "" the menu will not be shown in the page -->
       <!-- Static navbar -->
       <nav class="navbar navbar-inverse">
+        <img src="{{url_for('static', filename='hop-logo.png')}}" class="center" onclick="location.href='/'" style="width:50px; height: 50px;">
           <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
               <span class="sr-only">Toggle navigation</span>
